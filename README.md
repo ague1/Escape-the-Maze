@@ -22,4 +22,4 @@ Play online
 https://play.unity.com/en/games/0f5c726a-f27f-48fd-b858-f7bee9c159e2/escape-the-maze
 
 Author:
-Developed by #Agueda Talavera.
+Developed by # Agueda Talavera.
