@@ -1,7 +1,6 @@
 <img width="1612" height="694" alt="image" src="https://github.com/user-attachments/assets/78531e09-1dfa-461d-a36c-242e9c4fc104" />
 
-## Escape the Maze
-
+# Escape the Maze
 Escape the Maze is a game developed in Unity where the goal is to find the character's home before the time runs out.
 
 ## Features
