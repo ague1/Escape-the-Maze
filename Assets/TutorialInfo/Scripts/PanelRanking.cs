@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Globalization;
 using System.Collections.Generic;
 
 public class PanelRanking : MonoBehaviour
 {
     public Text recordText;
-    private float lastTime = 0f;
     [SerializeField] private TimerTrigger timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,15 +19,9 @@ public class PanelRanking : MonoBehaviour
         
     }
 
-    public void SetLastTime(float time)
-    {
-        lastTime = time;
-    }
-
     public void Show()
     {
         float finalTimer = timer.GetElapsedTime();
-        SetLastTime(finalTimer);
         string saveTimes = PlayerPrefs.GetString("Tiempos", "");
         var list = new List<float>();
 
@@ -35,20 +29,27 @@ public class PanelRanking : MonoBehaviour
         { 
             foreach (var t in saveTimes.Split(','))
             {
-                if (float.TryParse(t, out float val))
-                list.Add(val);
+                if (float.TryParse(t, NumberStyles.Float,
+                CultureInfo.InvariantCulture, out float val))
+                {
+                    list.Add(val);
+                }
             }
         }
         
         list.Add(finalTimer);
 
         list.Sort();
+
+        if (list.Count > 3)
+            list.RemoveRange(3, list.Count - 3);
         
-        PlayerPrefs.SetString("Tiempos", string.Join(",", list));
+        
+        PlayerPrefs.SetString("Tiempos", string.Join(",", list.ConvertAll(x => x.ToString(CultureInfo.InvariantCulture))));
         PlayerPrefs.Save();
 
 
-        string texto = "Último Tiempo: " + lastTime.ToString("F2") + "s\n";
+        string texto = "Último Tiempo: " + finalTimer.ToString("F2") + "s\n";
 
         for (int i = 0; i < 3; i++)
         {
@@ -61,7 +62,5 @@ public class PanelRanking : MonoBehaviour
         recordText.text = texto;
         gameObject.SetActive(true); 
     }
-
-
     
 }
