@@ -1,5 +1,5 @@
 <img width="1612" height="694" alt="image" src="https://github.com/user-attachments/assets/78531e09-1dfa-461d-a36c-242e9c4fc104" />
-# Escape the Maze
+## Escape the Maze
 
 Escape the Maze is a game developed in Unity where the goal is to find the character's home before the time runs out.
 
@@ -22,4 +22,4 @@ Play online
 https://play.unity.com/en/games/0f5c726a-f27f-48fd-b858-f7bee9c159e2/escape-the-maze
 
 Author:
-Developed by # Agueda Talavera.
+Developed by <b/>Agueda Talavera<b/>.
